@@ -1,2 +1,2 @@
 deploy:
-	scp helloworld.py pi@frcvision.local:uploaded.py
+	scp detectRed2.py pi@frcvision.local:uploaded.py
