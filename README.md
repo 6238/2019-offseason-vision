@@ -11,3 +11,5 @@ use `sudo timedatectl set-time "YYYY-MM-DD HH-mm-ss"` to set the time close to U
 use `sudo timedatectl set-timezone America/Los_Angeles` to set time zone
 
 `sudo timedatectl set-ntp true` to sync with time servers, run `sudo reboot` after
+
+`export PYTHONPATH="/usr/local/frc/lib/python3.7/dist-packages"` to allow usage of frc's libraries (specifically opencv)
