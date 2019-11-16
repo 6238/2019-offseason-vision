@@ -6,8 +6,6 @@ deploy:
 install: 
 	@echo Please enter the path to the install image \(\.img file\);
 	@read image;\
-	echo List of the disks mounted on your computer:;\
-	df -h;\
 	echo Please enter the path to the disk you wish to install on \(ex. /dev/rdisk2\):;\
 	read disk;\
 	echo Are you sure you want to write to $$disk ? This cannot be undone. [y/n];\
