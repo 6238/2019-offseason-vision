@@ -1,7 +1,8 @@
 # copies an input file to the raspberry pi as uploaded.py
 deploy:
 	@echo Please give the name of the python file \(with the \.py extension\)
-	scp $$input pi@frcvision.local:uploaded.py
+	@scp $$input pi@frcvision.local:uploaded.py
+	@scp runCamera pi@frcvision.local:runCamera
 
 install: 
 	@echo Please enter the path to the install image \(\.img file\);
@@ -12,5 +13,5 @@ install:
 	read yesno;\
 	if [ "$$yesno" == "y" ] || [ "$$yesno" == "Y" ];\
 	then\
-		sudo dd if=$$image of=$$disk bs=1m;\
+		sudo dd bs=1m if=$$image of=$$disk conv=sync;\
 	fi
