@@ -1,6 +1,5 @@
 # copies an input file to the raspberry pi as uploaded.py
 deploy:
-	@echo Please give the name of the python file \(with the \.py extension\)
 	@scp $$input pi@frcvision.local:uploaded.py
 	@scp runCamera pi@frcvision.local:runCamera
 
