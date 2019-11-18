@@ -38,5 +38,19 @@ def main():
         # Insert your image processing logic here!
         #
 
+        blur = cv.blur(img, (10,10))
+        output = cv.cvtColor(blur, cv.COLOR_BGR2HSV)
+
+        lower_red = np.array([30, 150, 50])
+        upper_red = np.array([200, 200, 150])
+
+        mask = cv.inRange(output, lower_red, upper_red)
+        res = cv.bitwise_and(output, output, mask=mask)
+
+        print(res)
+
         # (optional) send some image back to the dashboard
         outputStream.putFrame(img)
+        print("run")
+
+main()
