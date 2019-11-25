@@ -49,11 +49,21 @@ def main():
 
         # print(output)
         # print(output[output.size/2][output.itemsize/2])
+
         print(output[120][160])
-        print((output[120][160][0] < 10 or output[120][160][0] > 170) and (output[120][160][2] > 240))
+        h = output[120][160][0]
+        s = output[120][160][1]
+        v = output[120][160][2]
+
+        if (h < 15 or h > 170) and v > 240:
+            print("red")
+        elif (15 < h < 40):
+            print("orange")
+        elif (40 < h < 70):
+            print("yellow")
 
         # (optional) send some image back to the dashboard
-        outputStream.putFrame(img)
+        outputStream.putFrame(output)
         print("run")
 
 if __name__ == "__main__":

@@ -2,7 +2,7 @@
 from cscore import CameraServer
 
 # Import OpenCV and NumPy
-import cv2
+import cv2 as cv
 import numpy as np
 
 def main():
@@ -28,13 +28,22 @@ def main():
         time, img = cvSink.grabFrame(img)
         if time == 0:
             # Send the output the error.
-            outputStream.notifyError(cvSink.getError());
+            outputStream.notifyError(cvSink.getError())
             # skip the rest of the current iteration
             continue
 
         #
         # Insert your image processing logic here!
         #
+        
+        blur = cv.blur(img, (10,10))
+        output = cv.cvtColor(blur, cv.COLOR_BGR2HSV)
+
+        lower_red = np.array([10, 150, 50])
+        upper_red = np.array([170, 200, 150])
+
+        mask = cv.inRange(output, lower_red, upper_red)
+        res = cv.bitwise_and(output, output, mask=mask)
 
         # (optional) send some image back to the dashboard
-        outputStream.putFrame(img)
+        outputStream.putFrame(res)
