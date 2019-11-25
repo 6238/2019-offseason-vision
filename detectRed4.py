@@ -1,10 +1,8 @@
-#!/usr/bin/env python3
-
 # Import the camera server
 from cscore import CameraServer
 
 # Import OpenCV and NumPy
-import cv2 as cv
+import cv2
 import numpy as np
 
 def main():
@@ -30,7 +28,7 @@ def main():
         time, img = cvSink.grabFrame(img)
         if time == 0:
             # Send the output the error.
-            outputStream.notifyError(cvSink.getError())
+            outputStream.notifyError(cvSink.getError());
             # skip the rest of the current iteration
             continue
 
@@ -38,23 +36,5 @@ def main():
         # Insert your image processing logic here!
         #
 
-        blur = cv.blur(img, (10,10))
-        output = cv.cvtColor(blur, cv.COLOR_BGR2HSV)
-
-        # lower_red = np.array([10, 150, 50])
-        # upper_red = np.array([170, 200, 150])
-
-        # mask = cv.inRange(output, lower_red, upper_red)
-        # res = cv.bitwise_and(output, output, mask=mask)
-
-        # print(output)
-        # print(output[output.size/2][output.itemsize/2])
-        print(output[120][160])
-        print((output[120][160][0] < 10 or output[120][160][0] > 170) and (output[120][160][2] > 240))
-
         # (optional) send some image back to the dashboard
         outputStream.putFrame(img)
-        print("run")
-
-if __name__ == "__main__":
-    main()

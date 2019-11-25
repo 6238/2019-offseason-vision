@@ -11,7 +11,6 @@ import time
 import sys
 
 from cscore import VideoSource, UsbCamera
-import ffmpeg
 
 #   JSON format:
 #   {
